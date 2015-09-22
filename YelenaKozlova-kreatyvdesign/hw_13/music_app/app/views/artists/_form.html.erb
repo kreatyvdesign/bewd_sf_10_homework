@@ -1,0 +1,8 @@
+<div class="panel-body">
+  <%=simple_form_for @artist do |f| %>
+  <%= f.input :name, label: false, placeholder: "Name" %>
+  <%= f.input :description, label: false, as: :text, placeholder: "Bio" %>
+  <%= f.input :image_url, label: false, placeholder: "Image URL" %>
+  <%= f.submit "Submit".html_safe, class: "btn btn-lg btn-danger" %>&nbsp;&nbsp;<%=link_to 'Cancel', artists_path, class: 'btn btn-default btn-lg' %>
+  <% end %>
+</div>
