@@ -1,8 +1,10 @@
+<h1>Edit Song</h1>
+
 <div class="panel-body">
-  <%=simple_form_for @song do |f| %>
+  <%=simple_form_for([@artist, @song]) do |f| %>
   <%= f.input :title, label: false, placeholder: "Song Title" %>
   <%= f.input :length, label: false, placeholder: "Song Length" %>
   <%= f.input :genre, label: false, placeholder: "Genre" %>
-  <%= f.submit "Submit".html_safe, class: "btn btn-lg btn-danger" %>&nbsp;&nbsp;<%=link_to 'Cancel', artists_path, class: 'btn btn-default btn-lg' %>
+  <%= f.submit "Submit".html_safe, class: "btn btn-lg btn-danger" %>&nbsp;&nbsp;<%=link_to 'Cancel', artist_path(@artist), class: 'btn btn-default btn-lg' %>
   <% end %>
 </div>

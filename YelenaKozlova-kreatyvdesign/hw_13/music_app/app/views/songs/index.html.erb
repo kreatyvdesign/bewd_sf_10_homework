@@ -1,0 +1,24 @@
+<h4>Song list</h4>
+<table class="table table-hover">
+  <!-- This is a table row with headers -->
+  <tr>
+    <th>Title</th>
+    <th>Length</th>
+    <th>Genre</th>
+    <th>Artist</th>
+    <th>Actions</th>
+  </tr>
+  <% @songs.each do |song| %>
+  <tr>
+    <td><%= song.title %></td>
+    <td><%= song.length %></td>
+    <td><%= song.genre %></td>
+    <td><a href="<%=artist_path(song.artist.id)%>"><%=song.artist.name  %></a>
+    </td>
+    <td>
+      <%=link_to 'Edit', edit_artist_song_path(song.artist.id, song.id), class: 'btn btn-success btn-xs' %>
+      <%=link_to 'Delete', [song.artist, song], method: :delete, data: {confirm: "You sure homey?"}, class: 'btn btn-danger btn-xs' %>
+    </td>
+  </tr>
+  <% end %>
+</table>

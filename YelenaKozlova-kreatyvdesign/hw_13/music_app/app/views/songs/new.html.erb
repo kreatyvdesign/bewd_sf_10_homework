@@ -1,22 +1,10 @@
 <h1>New Song</h1>
 
-<%= form_for :song do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :length %><br>
-    <%= f.text_field :length %>
-  </p>
-
-  <p>
-    <%= f.label :genre %><br>
-    <%= f.text_field :genre %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="panel-body">
+  <%=simple_form_for([@artist, @artist.songs.build]) do |f| %>
+  <%= f.input :title, label: false, placeholder: "Song Title" %>
+  <%= f.input :length, label: false, placeholder: "Song Length" %>
+  <%= f.input :genre, label: false, placeholder: "Genre" %>
+  <%= f.submit "Submit".html_safe, class: "btn btn-lg btn-danger" %>&nbsp;&nbsp;<%=link_to 'Cancel', artist_path(@artist), class: 'btn btn-default btn-lg' %>
+  <% end %>
+</div>

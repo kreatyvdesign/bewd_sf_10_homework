@@ -5,6 +5,29 @@
 <h6>Bio:</h6>
 <p><%= @artist.description %></p>
 <p><%=link_to 'View All', artists_path, class: 'btn btn-default btn-xs' %>
+<%=link_to 'Add Song', new_artist_song_path(@artist), class: 'btn btn-default btn-xs' %>
 <%=link_to 'Edit', edit_artist_path(@artist), class: 'btn btn-success btn-xs' %>
 <%=link_to 'Delete', @artist, method: :delete, data: {confirm: "You sure homey?"}, class: 'btn btn-danger btn-xs' %></p>
+<hr>
+<h4>Track list</h4>
+<table class="table table-hover">
+  <!-- This is a table row with headers -->
+  <tr>
+    <th>Title</th>
+    <th>Length</th>
+    <th>Genre</th>
+    <th>Actions</th>
+  </tr>
+  <% @artist.songs.each do |song| %>
+  <tr>
+    <td><%= song.title %></td>
+    <td><%= song.length %></td>
+    <td><%= song.genre %></td>
+    <td>
+      <%=link_to 'Edit', edit_artist_song_path(song.artist.id, song.id), class: 'btn btn-success btn-xs' %>
+      <%=link_to 'Delete', [song.artist, song], method: :delete, data: {confirm: "You sure homey?"}, class: 'btn btn-danger btn-xs' %>
+    </td>
+  </tr>
+  <% end %>
+</table>
 </div>
